@@ -3,12 +3,12 @@
 # ~~~~
 
 # Home page
-GET         /                        controllers.Application.index
+GET         /                               controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file            controllers.Assets.at(path="/public", file)
+GET         /assets/*file                   controllers.Assets.at(path="/public", file)
 
 #ToDoList
-GET         /tenants                 controllers.Application.tenants
-POST        /tenants                 controllers.Application.newTenant
-POST        /tenants/:id/delete      controllers.Application.deleteTenant(id: Long)
+GET         /tenants                        controllers.Application.tenants
+POST        /tenants                        controllers.Application.newTenant
+POST        /tenants/:tenantId/delete       controllers.Application.deleteTenant(tenantId: Long)

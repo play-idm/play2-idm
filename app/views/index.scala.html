@@ -8,8 +8,8 @@
     <ul>
     @tenants.map { tenant =>
         <li>
-            @tenant.label
-            @form(routes.Application.deleteTenant(tenant.id)){
+            @tenant.tenantDisplayName
+            @form(routes.Application.deleteTenant(tenant.tenantId)){
                 <input type="submit" value="Delete">
                 }
         </li>
@@ -19,7 +19,7 @@
     <h2>Add a new tenant</h2>
 
     @form(routes.Application.newTenant){
-        @inputText(taskFrom("label"))
+        @inputText(taskFrom("tenantDisplayName"))
 
         <input type="submit" value="Create">
     }

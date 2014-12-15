@@ -9,7 +9,7 @@ import com.sun.xml.internal.bind.v2.TODO
 
 object Application extends Controller {
   val tenantForm = Form(
-    "label" -> nonEmptyText
+    "tenantDisplayName" -> nonEmptyText
   )
   def index = Action {
     Redirect(routes.Application.tenants)
@@ -27,8 +27,8 @@ object Application extends Controller {
         }
       )
   }
-  def deleteTenant(id: Long) = Action { implicit request =>
-    Tenant.delete(id)
+  def deleteTenant(tenantId: Long) = Action { implicit request =>
+    Tenant.delete(tenantId)
     Redirect(routes.Application.tenants)
   }
 }
