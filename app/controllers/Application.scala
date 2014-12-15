@@ -4,31 +4,31 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.Task
+import models.{Tenant}
 import com.sun.xml.internal.bind.v2.TODO
 
 object Application extends Controller {
-  val taskForm = Form(
+  val tenantForm = Form(
     "label" -> nonEmptyText
   )
   def index = Action {
-    Redirect(routes.Application.tasks)
+    Redirect(routes.Application.tenants)
   }
-  def tasks = Action {
-    Ok(views.html.index(Task.all(), taskForm))
+  def tenants = Action {
+    Ok(views.html.index(Tenant.all(), tenantForm))
   }
-  def newTask = Action {
+  def newTenant = Action {
     implicit request =>
-      taskForm.bindFromRequest.fold(
-        errors => BadRequest(views.html.index(Task.all(),errors)),
+      tenantForm.bindFromRequest.fold(
+        errors => BadRequest(views.html.index(Tenant.all(),errors)),
         label => {
-          Task.create(label)
-          Redirect(routes.Application.tasks)
+          Tenant.create(label)
+          Redirect(routes.Application.tenants)
         }
       )
   }
-  def deleteTask(id: Long) = Action { implicit request =>
-    Task.delete(id)
-    Redirect(routes.Application.tasks)
+  def deleteTenant(id: Long) = Action { implicit request =>
+    Tenant.delete(id)
+    Redirect(routes.Application.tenants)
   }
 }

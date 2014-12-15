@@ -9,6 +9,6 @@ GET         /                        controllers.Application.index
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
 
 #ToDoList
-GET         /tasks                   controllers.Application.tasks
-POST        /tasks                   controllers.Application.newTask
-POST        /tasks/:id/delete        controllers.Application.deleteTask(id: Long)
+GET         /tenants                 controllers.Application.tenants
+POST        /tenants                 controllers.Application.newTenant
+POST        /tenants/:id/delete      controllers.Application.deleteTenant(id: Long)
